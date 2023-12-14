@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Criar a tua conta gratuita</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Criar a tua conta gratuita</h2>
+        <p>Tens de ter mais de 18 anos para te registares. Não é necessário um cartão de crédito.</p>
+
+        <h2>Registar</h2>
+        <form action="/registo" method="post">
+            <label for="username">Nome de Utilizador:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Palavra-passe:</label>
+            <input type="password" id="password" name="password" required autocomplete="current-password">
+
+            <label for="email">Endereço de Email:</label>
+            <input type="email" id="email" name="email">
+
+            <label for="dob">Data de Nascimento:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <h3>Eu sou:</h3>
+            <select name="gender">
+                <option value="female">Um Homen</option>
+                <option value="male">um mulher</option>
+                <option value="female">Um Casal</option>
+                <option value="male">trans</option>
+            </select>
+
+            <div>
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">Li e concordo com os termos e condições.</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="privacy" name="privacy" required>
+                <label for="privacy">Li e concordei com a política de privacidade.</label>
+            </div>
+
+            <button type="submit">Criar Conta Gratuita</button>
+        </form>
+    </div>
+</body>
+
+<script>
+    const styleSheets = document.styleSheets;
+
+    for (let i = 0; i < styleSheets.length; i++) {
+        const styleSheet = styleSheets[i];
+        const href = styleSheet.href;
+
+        if (href) {
+            const timestamp = new Date().getTime();
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = `${href}?_=${timestamp}`; // Adiciona um parâmetro de data para evitar cache
+            document.head.appendChild(link);
+
+            link.onload = function() {
+                console.log('Loaded CSS:', href);
+            };
+
+            link.onerror = function() {
+                console.error('Failed to load CSS:', href);
+            };
+        }
+    }
+</script>
+</body>
+</html>
+
+
